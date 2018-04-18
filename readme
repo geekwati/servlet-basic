@@ -1,0 +1,9 @@
+In this ListenerTest Application
+
+we have to run this application using /ListenerTest/ListenTest.do 
+and this application directly run the servlet 
+and when web container try to run servlet it create sevletContext and servletConfig and give their rference to servlet
+we also make a MyServletContextListener class that is inherited by ServletContextListener 
+this class is called by container after making of servletContext
+and in that class i just read the servlet context parameter from web.xml to get dog's breed and with the help of breed we make an object of Dog class and set it as servletContext attribute.
+In doGet() of service() i get that dog's object from the servletContext and print its breed using getBreed() of Dog's class.
