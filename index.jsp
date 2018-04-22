@@ -6,6 +6,11 @@
 </head>
 
 <body class="well">
+	<!-- check whether authenticated user exist -->
+	<% session=request.getSession();
+	if(session.getAttribute("userName")!=null){
+			response.sendRedirect("./dashboard");
+	}%>
 	<div style="margin-top:10%"></div>
 	
 

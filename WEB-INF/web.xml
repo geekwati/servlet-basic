@@ -16,5 +16,13 @@
         <servlet-name>dashboardservlet</servlet-name>
         <url-pattern>/dashboard</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>logoutservlet</servlet-name>
+        <servlet-class>com.example.web.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logoutservlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
     
 </web-app>
