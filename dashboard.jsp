@@ -51,8 +51,8 @@
 
 			<ul class="nav nav-pills nav-stacked">
 				
-				<li class="active"><a class="getmsg" msgtype="inbox"><strong>Inbox</strong></a></li>
-				<li><a class="getmsg" msgtype="sentBox"><strong>Outbox</strong></a></li>
+				<li class="active"><a class="getmsg" msgtype="INBOX"><strong>Inbox</strong></a></li>
+				<li><a class="getmsg" msgtype="OUTBOX"><strong>Outbox</strong></a></li>
 
 			</ul>
 		</div>
@@ -60,7 +60,7 @@
 		<!-- Messages -->
 		<div class="col-sm-10" style="background-color:white;height:480px	;overflow-y: scroll;border-left: 2px solid grey;">
 			<div id="msg-list">
-				<jsp:include page="./getmessage?box=inbox"/>
+				<jsp:include page="./getmessage?box=INBOX"/>
 			</div>
 
 		</div>

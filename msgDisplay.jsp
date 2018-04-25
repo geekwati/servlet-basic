@@ -3,23 +3,20 @@
 	<table class="table table-hover table-striped">
 		<tbody>
 			<%
-
-			List<Message> msgList = (List<Message>)request.getAttribute("msgList");
-			String userTypeToShow=null;
-			if(request.getParameter("box").equals("in"))
-				userTypeToShow="from";
-			else
-				userTypeToShow="to";
-			for(Message msg : msgList) {
+				List<Message> msgList = (List<Message>)request.getAttribute("msgList");
 			%>
-			<tr>
-				<td class="col-sm-2"><%= msg.mSubject%></td>
-				<td class="col-sm-8 subject"><%= msg.mBody%></td>
-				<td><%= msg.dateTime%></td>
-			</tr>
-			<%}
+			
+			<%				
+				for(Message msg : msgList) {	
 			%>
+					<tr>
 
-
+						<td class="col-sm-2"><%= request.getParameter("box").equals("INBOX")? msg.fromUserName:"To: "+msg.toUserName%></td>
+						<td class="col-sm-7 subject"><strong><%= msg.mSubject%></strong> - <%= msg.mBody %></td>
+						<td class="col-sm-3"><%= msg.dateTime%></td>
+					</tr>
+			<% 
+				}	
+			%>
 		</tbody>
 	</table>
