@@ -8,11 +8,11 @@ public class DashboardServlet extends HttpServlet{
 		
 		HttpSession session=request.getSession();
 		
-		if(session.getAttribute("userName")==null){
-		
+		if(session.getAttribute("user")==null){
 			response.sendRedirect("./");
 		}
 		else{
+			System.out.println("old session");
 		RequestDispatcher view=request.getRequestDispatcher("dashboard.jsp");
 		view.forward(request,response);
 	}

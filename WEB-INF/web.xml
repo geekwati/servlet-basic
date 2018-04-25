@@ -24,5 +24,12 @@
         <servlet-name>logoutservlet</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
-    
+     <servlet>
+        <servlet-name>messageservlet</servlet-name>
+        <servlet-class>com.example.web.GetMessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>messageservlet</servlet-name>
+        <url-pattern>/getmessage</url-pattern>
+    </servlet-mapping>
 </web-app>

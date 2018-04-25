@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet{
 		}
 		else{
 			HttpSession session=request.getSession();
-			session.setAttribute("userName",userName);
+			session.setAttribute("user",mu);
 			response.sendRedirect("./dashboard");
 		}
 		
