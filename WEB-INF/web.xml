@@ -24,12 +24,37 @@
         <servlet-name>logoutservlet</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
-     <servlet>
+    
+    <servlet>
         <servlet-name>messageservlet</servlet-name>
         <servlet-class>com.example.web.GetMessageServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>messageservlet</servlet-name>
         <url-pattern>/getmessage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>composeservlet</servlet-name>
+        <servlet-class>com.example.web.ComposeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>composeservlet</servlet-name>
+        <url-pattern>/compose</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>emailsendservlet</servlet-name>
+        <servlet-class>com.example.web.SaveMessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>emailsendservlet</servlet-name>
+        <url-pattern>/emailsend</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>showmsgservlet</servlet-name>
+        <servlet-class>com.example.web.ShowMessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>showmsgservlet</servlet-name>
+        <url-pattern>/showmsg</url-pattern>
     </servlet-mapping>
 </web-app>

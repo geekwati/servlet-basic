@@ -2,14 +2,19 @@
 
 <html>
 <head>
-	<title>Login</title>
+	<title>DashBoard</title>
 	<link rel="stylesheet" href=".\bootstrap-3.3.7-dist\css\bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<style type="text/css">
 	.subject{
 		max-width: 100px;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+	}
+	.labelborder{
+		border-style: none;
 	}
 </style>
 </style>
@@ -21,8 +26,52 @@
 			$("#msg-list").html(responseText); 
 		});
 	});
-
 </script>
+<script>
+	$(document).on('click', '#compose', function () {
+		//var type=$(this).attr('msgtype');
+		$.get("compose",function(responseText) {   
+			$("#msg-list").html(responseText); 
+		});
+	});
+</script>
+<script>
+	$(document).on('click', '#send-email', function () {
+		
+		$.post("emailsend",{
+			body: $("#body").val(),
+			subject:$('#subject').val(),
+			toUserId:$("#toUserName").find(":selected").attr("id")
+
+		},
+		function(responseText,statusText,jqxhr) { 
+		alert("status code hel="+jqxhr.status)  ;
+			if(jqxhr.status==200){
+				//alert("hello200");
+				//alert(jqxhr.getResponseHeader('Location'));
+				window.location.href =jqxhr.getResponseHeader('Location');
+
+			}
+			else if(jqxhr.status==500){
+				alert("hi hello 500");
+				$("#msg-list").html(responseText); 
+			}
+		});
+	});
+</script>
+<script>
+	$(document).on('click', '#msgtable tr', function () {
+		//var type=$(this).attr('msgtype');
+		$.post("showmsg",{
+			mid:$(this).attr('mid'),
+			msgtype:$(this).attr('msgtype')
+		},
+			function(responseText) {   
+			$("#msg-list").html(responseText); 
+		});
+	});
+</script>
+
 </head>
 <body class="well"> 
 
@@ -38,6 +87,7 @@
 				<li class="active"><a href="#">Hello <%= userName%>!</a></li>
 				<li><a href="./logout"> Logout</a></li>
 			</ul>
+
 		</div>
 	</nav>
 
@@ -47,7 +97,7 @@
 		<!-- Menu Bar -->
 		<div class="col-sm-2">
 			
-			<div style="margin-bottom: 20px;padding: 5px"><button type="button" class=" btn btn-info btn-lg btn-block" >Compose</button></div>
+			<div style="margin-bottom: 20px;padding: 5px"><button type="button" class=" btn btn-info btn-lg btn-block" id="compose">Compose</button></div>
 
 			<ul class="nav nav-pills nav-stacked">
 				
@@ -60,6 +110,15 @@
 		<!-- Messages -->
 		<div class="col-sm-10" style="background-color:white;height:480px	;overflow-y: scroll;border-left: 2px solid grey;">
 			<div id="msg-list">
+				<% Object messageStatus=session.getAttribute("message-status");
+
+				if(messageStatus!=null) {
+			%>
+					<strong><%= (String)messageStatus %></strong>
+					
+			<% 
+				session.removeAttribute("message-status");
+				} %>
 				<jsp:include page="./getmessage?box=INBOX"/>
 			</div>
 
