@@ -29,28 +29,27 @@ public class SaveMessageServlet extends HttpServlet{
 			Message msg=Message.getMessage(body,subject,loginUser.userId,Integer.parseInt(toUserId));
 			statusOfMail=s.createMessage(msg);
 		}
-		String error;
+		
+		//response.setContentType("application/json");
+
+		PrintWriter out = response.getWriter();
+
+		String msgStatus;
+		Boolean success;
 		if(statusOfMail){
+			success = true;
+			msgStatus="Your mail has been successfully sent.";
+			
+			System.out.println(msgStatus);
+			session.setAttribute("message-status",msgStatus);
 
-			error="Your mail has been successfully sent.";
-			System.out.println(error);
-			session.setAttribute("message-status",error);
-			response.setStatus(200);
-			response.setHeader("Location", "./dashboard");
-
-		}
-
-		else{
-			error="Error while email sending!";
-			System.out.println(error);
-			response.setStatus(500);
-			session.setAttribute("message-status",error);
-			//request.setAttribute("toUser",toUserId);
-			//request.setAttribute("body",body);
-			//request.setAttribute("subject",subject);
-			RequestDispatcher view=request.getRequestDispatcher("/compose");
-			view.forward(request,response);
+		} else {
+			success = false;
+			msgStatus="Error while sending email!";
+			System.out.println(msgStatus);
 		}
 		
+		out.print(String.format("{\"success\":\"%s\", \"msgStatus\":\"%s\"}", success, msgStatus));
+		out.flush();
 	}
 }

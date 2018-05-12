@@ -8,6 +8,26 @@
         <servlet-name>loginservlet</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
+    <filter>
+        <filter-name>myfilter</filter-name>
+        <filter-class>com.example.web.MyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>myfilter</filter-name>
+        <url-pattern>/dashboard</url-pattern>
+        <url-pattern>/logout</url-pattern>
+        <url-pattern>index.jsp</url-pattern>
+        <url-pattern>/login</url-pattern>
+        <!-- <url-pattern>/getmessage</url-pattern>
+        <url-pattern>/compose</url-pattern>
+        <url-pattern>/emailsend</url-pattern>
+        <url-pattern>/showmsg</url-pattern>
+        <url-pattern>dashboard.jsp</url-pattern>
+        <url-pattern>msgDisplay.jsp</url-pattern>
+        <url-pattern>msgDetail.jsp</url-pattern>
+        <url-pattern>compose.jsp</url-pattern> -->
+        
+    </filter-mapping>
     <servlet>
         <servlet-name>dashboardservlet</servlet-name>
         <servlet-class>com.example.web.DashboardServlet</servlet-class>

@@ -11,10 +11,8 @@ public class DashboardServlet extends HttpServlet{
 		if(session.getAttribute("user")==null){
 			response.sendRedirect("./");
 		}
-		else{
-			System.out.println("old session");
+		System.out.println("old session");
 		RequestDispatcher view=request.getRequestDispatcher("dashboard.jsp");
 		view.forward(request,response);
-	}
 	}
 } 

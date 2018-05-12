@@ -1,4 +1,5 @@
 <%@ page import="org.myemail.domain.*,java.util.*" %>
+<div id="test"></div>
 <form class="form-horizontal">
 	<% Object messageStatus=session.getAttribute("message-status");
 		Integer toUserId=0;
@@ -22,10 +23,10 @@
 		<div class="col-sm-8"><select class="form-control" id="toUserName" name="toUserName">
         
         	<%
+			
 				List<MailUser> recipientList = (List<MailUser>)request.getAttribute("recipientList");
 
-			%>
-			<%	
+			
 				for(MailUser recipientUser : recipientList) {	
 			%>
 					<option id="<%= recipientUser.userId%>" <%= (recipientUser.userId==toUserId)?"selected":""%>><%= recipientUser.userName%></option>
@@ -47,7 +48,7 @@
 	<div class="form-group">
 		<label  class="control-label col-sm-2 col-sm-offset-1"  for="body">Body:</label>
 		<div class="col-sm-8">
-			<textarea class="form-control" rows="5" id="body" name="body" value="<%= body%>"></textarea>
+			<textarea class="form-control" rows="5" id="body" name="body"><%= body%></textarea>
 			
 		</div>
 	</div>
@@ -56,4 +57,5 @@
 			<button type="button" class="btn btn-default" id="send-email">Submit</button>
 		</div>
 	</div>
+
 </form>

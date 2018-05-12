@@ -8,7 +8,7 @@
 <body class="well">
 	<!-- check whether authenticated user exist -->
 	<% session=request.getSession();
-	if(session.getAttribute("userName")!=null){
+	if(session.getAttribute("user")!=null){
 	response.sendRedirect("./dashboard");
 }%>
 <div style="margin-top:10%"></div>

@@ -4,10 +4,11 @@
 		<tbody>
 			<%
 				List<Message> msgList = (List<Message>)request.getAttribute("msgList");
-							
+				String msgType;			
+				String mid;
 				for(Message msg : msgList) {
-				String msgType= request.getParameter("box").equals("INBOX")? "INBOX":"OUTBOX";
-				String mid=""+msg.mId;	
+					msgType= request.getParameter("box").equals("INBOX")? "INBOX":"OUTBOX";
+					mid=""+msg.mId;	
 			%>
 					<tr class= "show-msg" mid="<%= mid %>" msgtype="<%= msgType%>"> 
 						
