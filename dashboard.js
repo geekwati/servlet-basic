@@ -73,9 +73,6 @@ $(document).on('click', '#msgtable tr', function () {
 	    });
 	});
 function myerrorfunction(){
-	/*MailService s=new MailService();
-	session.invalidate();
-	s.closeUser();*/
 	window.location.href = '/EmailApp/';// or whatever
 }
 
