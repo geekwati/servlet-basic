@@ -28,12 +28,25 @@
 					<form class="form-horizontal" action="./login" method="post">
 						<!-- Error Handling -->
 						<% Object error=request.getAttribute("error");
+						   Object msg=request.getAttribute("msg");
+
 
 						if(error!=null) {
 						%>
 						<div class="form-group">
 							<div class="col-sm-offset-3 text-danger">
 								<strong><%= error %></strong>
+							</div>
+						</div>
+					    <% }
+						if(msg!=null) {
+						%>
+						<div class="form-group">
+							<div class="col-sm-offset-3 text-danger">
+								<strong><%= msg%></strong>
+								<% if(msg!=null)
+									request.removeAttribute("msg");
+								%>
 							</div>
 						</div>
 						<% } %>
@@ -43,6 +56,8 @@
 							<label  class="control-label col-sm-2 col-sm-offset-1"  for="name">Name:</label>
 							<% String name=(error!=null)?request.getParameter("name"):"";
 							String pwd=(error!=null)?request.getParameter("pwd"):"";
+							if (error!=null)
+								request.removeAttribute("error");
 
 							%> 
 							<div class="col-sm-8"><input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" 
@@ -67,8 +82,11 @@
 							<div class="form-group"> 
 								<div class="col-sm-offset-3 col-sm-9">
 									<button type="submit" class="btn btn-default">Submit</button>
+									<a href="createUser.jsp" class="btn btn-default">New User</a>
+									
 								</div>
 							</div>
+							
 						</form>
 					</div>
 				</div>
